@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
   pageTitle = 'Product List';
+  imageHeight = 30;
+  showImage = false;
   products: any[] = [
     {
       prodId: 2,
@@ -16,7 +18,7 @@ export class ProductsComponent implements OnInit {
       description: '15 gallon capacity rolling garden cart',
       price: 32.99,
       rating: 4.2,
-      imageUrl: 'assets/image/garden_cart.png'
+      imageUrl: 'assets/images/garden_cart.png'
     },
     {
       prodId: 5,
@@ -26,10 +28,12 @@ export class ProductsComponent implements OnInit {
       description: '15 pounds heavy hammer',
       price: 12.99,
       rating: 3.2,
-      imageUrl: 'assets/image/hammer.png'
+      imageUrl: 'assets/images/hammer.png'
     }
   ];
   constructor() {}
 
   ngOnInit() {}
+
+  toggleImage = () => this.showImage = !this.showImage;
 }
