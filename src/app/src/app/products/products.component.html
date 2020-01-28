@@ -6,12 +6,12 @@
     <div class="row">
       <div class="col-md-2">Filter by:</div>
       <div class="col-md-4">
-        <input type="text" />
+        <input type="text" [(ngModel)]="listFilter" />
       </div>
     </div>
-    <div class="row">
+    <div class="row" [style.margin.px]="10">
       <div class="col-md-6">
-        <h4>Filtered by:</h4>
+        <h4>Filtered by: {{ listFilter }}</h4>
       </div>
     </div>
     <div class="table-responsive" *ngIf="products && products.length">
@@ -38,10 +38,10 @@
                 alt=""
               />
             </td>
-            <td>{{ item.prodName }}</td>
-            <td>{{ item.prodCode }}</td>
+            <td>{{ item.prodName | uppercase }}</td>
+            <td>{{ item.prodCode | lowercase }}</td>
             <td>{{ item.releaseDate }}</td>
-            <td>{{ item.price }}</td>
+            <td>{{ item.price | currency: "DK":"kr.":"1.2-2" }}</td>
             <td>{{ item.rating }}</td>
           </tr>
         </thead>
