@@ -1,10 +1,10 @@
-import { Component, OnInit, OnChanges, Input, Output } from "@angular/core";
-import { EventEmitter } from "@angular/core";
+import { Component, OnInit, OnChanges, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
-  selector: "app-star",
-  templateUrl: "./star.component.html",
-  styleUrls: ["./star.component.css"]
+  selector: 'app-star',
+  templateUrl: './star.component.html',
+  styleUrls: ['./star.component.css']
 })
 export class StarComponent implements OnInit, OnChanges {
   @Input() rating: number;
