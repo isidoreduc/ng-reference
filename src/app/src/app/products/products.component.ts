@@ -10,7 +10,22 @@ export class ProductsComponent implements OnInit {
   pageTitle = "Product List";
   imageHeight = 30;
   showImage = false;
-  listFilter = "cart";
+
+  // getter and setter for listFilter property
+  // tslint:disable-next-line: variable-name
+  _listFilter: string;
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  // if we have a listFilter word, we set the filtered list of products to reflect that, by calling the filtering function. if no listFilter word, the list of filtered products contains all the products
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this.listFilter
+      ? this.performFilter(this.listFilter)
+      : this.products;
+  }
+
+  filteredProducts: IProduct[];
   products: IProduct[] = [
     {
       productId: 2,
@@ -33,9 +48,21 @@ export class ProductsComponent implements OnInit {
       imageUrl: "assets/images/hammer.png"
     }
   ];
-  constructor() {}
+
+  constructor() {
+    this.listFilter = "";
+    this.filteredProducts = this.products;
+  }
 
   ngOnInit() {}
 
   toggleImage = () => (this.showImage = !this.showImage);
+
+  performFilter(filterBy: string): IProduct[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter(
+      (p: IProduct) =>
+        p.productName.toLocaleLowerCase().indexOf(filterBy) !== -1
+    );
+  }
 }
