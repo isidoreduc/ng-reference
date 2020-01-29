@@ -17,7 +17,7 @@
     <div class="table-responsive" *ngIf="products && products.length">
       <table class="table">
         <thead>
-          <tr>
+          <tr class="table-header">
             <th>
               <button class="btn btn-primary" (click)="toggleImage()">
                 {{ showImage ? "Hide" : "Show" }} Image
@@ -38,11 +38,11 @@
                 alt=""
               />
             </td>
-            <td>{{ item.prodName | uppercase }}</td>
-            <td>{{ item.prodCode | lowercase }}</td>
+            <td>{{ item.productName | uppercase }}</td>
+            <td>{{ item.productCode | lowercase }}</td>
             <td>{{ item.releaseDate }}</td>
             <td>{{ item.price | currency: "DK":"kr.":"1.2-2" }}</td>
-            <td>{{ item.rating }}</td>
+            <td>{{ item.starRating }}</td>
           </tr>
         </thead>
         <tbody></tbody>
