@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Output } from "@angular/core";
-import { EventEmitter } from "protractor";
+import { EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-star",
@@ -9,7 +9,7 @@ import { EventEmitter } from "protractor";
 export class StarComponent implements OnInit, OnChanges {
   @Input() rating: number;
   starWidth: number;
-  @Output() clickedRating: EventEmitter = new EventEmitter();
+  @Output() clickedRating: EventEmitter<string> = new EventEmitter<string>();
   constructor() {}
 
   ngOnInit() {}
