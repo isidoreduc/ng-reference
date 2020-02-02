@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   // if we have a listFilter word, we set the filtered list of products to reflect that, by calling the filtering function. if no listFilter word, the list of filtered products contains all the products
   set listFilter(value: string) {
-    this._listFilter = value;
+    this._listFilter = '';
     this.filteredProducts = this.listFilter
       ? this.performFilter(this.listFilter)
       : this.products;
@@ -30,9 +30,7 @@ export class ProductsComponent implements OnInit {
   filteredProducts: IProduct[];
   products: IProduct[] = [];
 
-  constructor(private productService: ProductService) {
-    this.listFilter = '';
-  }
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.products = this.productService.getProducts();
