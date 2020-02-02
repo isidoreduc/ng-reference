@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/model/product';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -27,35 +28,16 @@ export class ProductsComponent implements OnInit {
   }
 
   filteredProducts: IProduct[];
-  products: IProduct[] = [
-    {
-      productId: 2,
-      productName: 'Garden Cart',
-      productCode: 'GDN-003',
-      releaseDate: 'March 18, 2019',
-      description: '15 gallon capacity rolling garden cart',
-      price: 32.99,
-      starRating: 4.2,
-      imageUrl: 'assets/images/garden_cart.png'
-    },
-    {
-      productId: 5,
-      productName: 'Hammer',
-      productCode: 'GDN-004',
-      releaseDate: '18 March 2019',
-      description: '15 pounds heavy hammer',
-      price: 12.99,
-      starRating: 3.2,
-      imageUrl: 'assets/images/hammer.png'
-    }
-  ];
+  products: IProduct[] = [];
 
-  constructor() {
+  constructor(private productService: ProductService) {
     this.listFilter = '';
-    this.filteredProducts = this.products;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.products = this.productService.getProducts();
+    this.filteredProducts = this.products;
+  }
 
   toggleImage = () => (this.showImage = !this.showImage);
 
