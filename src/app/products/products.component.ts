@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   // if we have a listFilter word, we set the filtered list of products to reflect that, by calling the filtering function. if no listFilter word, the list of filtered products contains all the products
   set listFilter(value: string) {
-    this._listFilter = '';
+    this._listFilter = value;
     this.filteredProducts = this.listFilter
       ? this.performFilter(this.listFilter)
       : this.products;
@@ -29,12 +29,19 @@ export class ProductsComponent implements OnInit {
 
   filteredProducts: IProduct[];
   products: IProduct[] = [];
+  errorMessage = '';
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
+    this.productService.getProducts().subscribe({
+      next: prods => {
+        this.products = prods;
+        // we need to assign this inside the subscription, otherwise it does not wait for the data, and be empty
+        this.filteredProducts = this.products;
+      },
+      error: err => (this.errorMessage = err)
+    });
   }
 
   toggleImage = () => (this.showImage = !this.showImage);
