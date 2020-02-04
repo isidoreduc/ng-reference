@@ -1,4 +1,19 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/welcome']">{{ title }}</a>
+  <ul class="nav nav-pills">
+    <li>
+      <button class="btn btn-light" [routerLink]="['/welcome']">Home</button>
+    </li>
+    <li>
+      <button class="btn btn-light" [routerLink]="['/products']">
+        Product List
+      </button>
+    </li>
+  </ul>
+</nav>
+<br />
+
+<!-- this is where the routed component view shows -->
 <div class="container">
-  <h1>{{ title }}</h1>
-  <app-products></app-products>
+  <router-outlet></router-outlet>
 </div>
