@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+// tslint:disable-next-line: quotemark
+import { Injectable } from "@angular/core";
 import { IProduct } from '../model/product';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({

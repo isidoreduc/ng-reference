@@ -1,3 +1,8 @@
 .table-header {
   color: blue;
 }
+
+a {
+  text-decoration: none;
+  color: blue;
+}

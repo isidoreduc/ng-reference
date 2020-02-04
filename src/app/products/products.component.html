@@ -38,7 +38,12 @@
                 alt=""
               />
             </td>
-            <td>{{ item.productName | uppercase }}</td>
+            <!-- details navigation on name -->
+            <td>
+              <a [routerLink]="['/products', item.productId]">{{
+                item.productName | uppercase
+              }}</a>
+            </td>
             <td>{{ item.productCode | lowercase | convertToSpaces: "-" }}</td>
             <td>{{ item.releaseDate }}</td>
             <td>{{ item.price | currency: "DK":"kr.":"1.2-2" }}</td>
