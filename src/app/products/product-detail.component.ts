@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../model/product';
-import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   // selector: 'app-product-detail',
@@ -13,7 +12,7 @@ export class ProductDetailComponent implements OnInit {
   product: IProduct;
   errorMessage: string;
 
-  constructor(private route: ActivatedRoute, private service: ProductService) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     // plus operator is a shortcut to convert the id from string to number
@@ -29,5 +28,9 @@ export class ProductDetailComponent implements OnInit {
       starRating: 3.2,
       imageUrl: 'assets/images/leaf_rake.png'
     };
+  }
+
+  onBack() {
+    this.router.navigate(['/products']);
   }
 }
